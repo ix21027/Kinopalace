@@ -17,6 +17,11 @@ gem 'devise'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
+gem 'activeadmin_addons'
+gem 'arctic_admin'
+gem 'jquery-rails'
+gem 'jquery-inputmask-rails'
+gem 'bootstrap_tokenfield_rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
