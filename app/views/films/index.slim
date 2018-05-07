@@ -1,0 +1,36 @@
+.title.is-1.is-large.has-text-success Kinopalace
+
+.container
+  - for f in @films
+      .card
+        .card-content
+          .media
+            .media-left
+              .images (style="max-width: 150px")
+                = image_tag f.poster.url
+            .media-content
+              p.title.is-1
+                = link_to(f.title, controller: "films", action: "show", id: f.id)
+              p.subtitle
+                - f.times_s.split.each do |t|
+                  span.button.my_btn[ #time class=($time_now < t ? 'is-link is-info':'')
+                    title=(t<"18:00"?"60грн.":"90грн.") 
+                    class=(t<"18:00"?"before18":"after18")
+                  ]
+                    = t 
+                  
+javascript:
+  $(document).ready(function(){
+    $("#time")
+        .data("time", $(this).text).each(function() {
+          $( this ).hover(function(){
+          $("#time").data("time") < "18:00" ? 
+            $(this).text("60грн.")
+          :
+            $(this).text("90грн.");
+        }, function(){
+        $(this).text($("#time").data("time"));
+        });
+        
+    });
+  });

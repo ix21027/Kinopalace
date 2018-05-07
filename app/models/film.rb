@@ -8,8 +8,8 @@ class Film < ApplicationRecord
   
   before_validation {self.times = times.split(/,/).sort!.join(",")}
   
-  def self.times_s
-    self.times.split(/,/).sort!
+  def times_s
+    self.times.gsub ',', " ".html_safe
   end
   
 end

@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Kino"
+  config.site_title = "Admin"
   
   
   meta_tags_options = { viewport: 'width=device-width, initial-scale=1' }
@@ -14,7 +14,7 @@ ActiveAdmin.setup do |config|
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
-   config.site_title_link = "/admin"
+   config.site_title_link = "/"
 
   # Set an optional image to be displayed for the header
   # instead of a string (overrides :site_title)
@@ -45,7 +45,7 @@ ActiveAdmin.setup do |config|
   # within a namespace:
   #
     config.namespace :admin do |admin|
-     admin.site_title = "ADMIN"
+     admin.site_title = "Kinopalace"
    end
   #
   # This will ONLY change the title for the admin section. Other
@@ -182,7 +182,7 @@ ActiveAdmin.setup do |config|
   # Breadcrumbs are enabled by default. You can customize them for individual
   # resources or you can disable them globally from here.
   #
-   config.breadcrumb = false
+   config.breadcrumb = true
 
   # == Create Another Checkbox
   #

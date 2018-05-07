@@ -22,6 +22,9 @@ gem 'arctic_admin'
 gem 'jquery-rails'
 gem 'jquery-inputmask-rails'
 gem 'bootstrap_tokenfield_rails'
+gem 'slim'
+gem 'gon'
+gem 'bulma-rails', '~> 0.7.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

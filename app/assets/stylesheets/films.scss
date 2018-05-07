@@ -1,0 +1,12 @@
+// Place all the styles related to the films controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bulma";
+
+.my_btn {
+    margin-right: .5rem;
+    margin-top: 7rem;
+    &:hover {
+        background:inherit;
+    }
+}
