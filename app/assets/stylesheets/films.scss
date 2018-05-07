@@ -5,8 +5,10 @@
 
 .my_btn {
     margin-right: .5rem;
-    margin-top: 7rem;
     &:hover {
         background:inherit;
     }
+}
+h1 {
+    font-size: 5rem;
 }

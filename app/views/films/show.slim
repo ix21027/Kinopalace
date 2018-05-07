@@ -1,0 +1,26 @@
+.container  
+  h1.has-text-weight-semibold.has-text-centered.has-text-link 
+    = link_to "Kinopalace", root_path
+  .box 
+    .media
+      .media-left
+        figure.image
+          = image_tag @film.poster.url :large
+      .media-content
+        p.title.is-2 =@film.title
+        p.is-4
+          ="Жанр: #{@film.genre}."
+        p 
+          ="Продолжительность: #{@film.duration} мин."
+        br
+        .content
+          p. 
+            =@film.description
+          p.subtitle
+            - @film.times.split(',').each do |t|
+                span.button.is-rounded.my_btn[ 
+                      class=($time_now < t ? 'is-link is-info':'')
+                      title=(t<"18:00"?"60грн.":"90грн.")
+                    ]
+                    = t 
+      

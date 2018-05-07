@@ -1,24 +1,25 @@
-.title.is-1.is-large.has-text-success Kinopalace
-
-.container
+.container  
+  h1.has-text-weight-semibold.has-text-centered.has-text-link Kinopalace
   - for f in @films
-      .card
-        .card-content
-          .media
-            .media-left
-              .images (style="max-width: 150px")
-                = image_tag f.poster.url
-            .media-content
-              p.title.is-1
-                = link_to(f.title, controller: "films", action: "show", id: f.id)
-              p.subtitle
-                - f.times_s.split.each do |t|
-                  span.button.my_btn[ #time class=($time_now < t ? 'is-link is-info':'')
-                    title=(t<"18:00"?"60грн.":"90грн.") 
-                    class=(t<"18:00"?"before18":"after18")
-                  ]
-                    = t 
-                  
+      .columns style=("display: table-cell;")
+        .column.is-narrow
+          .box
+            figure.image.is-2by3 style=("height: 366px; width: 244px;")
+              = link_to(image_tag(f.poster.url(:large)), controller: "films", action: "show", id: f.id)
+            .content
+              .media 
+                .media-content
+                  p.title style=("text-align: center;")
+                    = link_to(f.title.truncate(16), controller: "films", action: "show", id: f.id)
+                  p.subtitle.has-text-centered
+                    - f.times_s.split.each do |t|
+                      span.button.is-rounded.my_btn[ 
+                        class=($time_now < t ? 'is-link is-info':'')
+                        title=(t<"18:00"?"60грн.":"90грн.") 
+                        class=(t<"18:00"?"before18":"after18")
+                      ]
+                        = t 
+                    
 javascript:
   $(document).ready(function(){
     $("#time")
