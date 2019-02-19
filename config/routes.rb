@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'films#index'
   get 'films/index'
   get 'films/show/:id', to: 'films#show'
+  get 'book', to: 'films#book'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

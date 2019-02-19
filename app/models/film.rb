@@ -1,5 +1,5 @@
 class Film < ApplicationRecord
-  
+  has_many :sessions
   has_attached_file :poster, styles: { large: "300x450>", medium: "200x350", thumb: "100x100",thumbnail: "60x60#" }
   validates_attachment_content_type :poster, content_type: /\Aimage/
   

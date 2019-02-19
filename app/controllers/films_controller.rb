@@ -12,6 +12,10 @@ class FilmsController < ApplicationController
       render "index"
     end
   end
+  
+  def book
+    @session_id = Session.find_by(time: params[:time])
+  end
 
 end
 

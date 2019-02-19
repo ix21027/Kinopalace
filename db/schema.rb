@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_02_144457) do
+ActiveRecord::Schema.define(version: 2019_02_19_010148) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 2018_05_02_144457) do
     t.string "poster_content_type"
     t.integer "poster_file_size"
     t.datetime "poster_updated_at"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "reserved_seats"
+    t.integer "film_id"
+    t.string "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_sessions_on_film_id"
   end
 
 end
