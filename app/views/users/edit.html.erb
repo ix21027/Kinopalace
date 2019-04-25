@@ -1,0 +1,9 @@
+<h1 class="has-text-weight-semibold has-text-centered has-text-link">
+    <%= link_to "Kinopalace", root_path %>
+</h1> 
+<h1 class="title is-2">Editing Preferences</h1> 
+
+
+<%= render 'form', user: @user %>
+
+<%= link_to '← Back', root_path, class: "tag is-light" %>

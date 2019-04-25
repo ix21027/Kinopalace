@@ -1,7 +1,13 @@
 class FilmsController < ApplicationController
-  
+  skip_before_action :verify_authenticity_token
+
   def index
     @films = Film.all
+    @user = current_user
+    if @user
+      FilmList.new(current_user).build 
+      @list = current_user.users_film_list
+    end
   end
  
   def show

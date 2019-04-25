@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_010148) do
+ActiveRecord::Schema.define(version: 2019_04_15_143433) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2019_02_19_010148) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "age_ratings", force: :cascade do |t|
+    t.string "coef"
+    t.integer "user_id"
+    t.string "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_age_ratings_on_user_id"
+  end
+
   create_table "films", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -55,6 +64,17 @@ ActiveRecord::Schema.define(version: 2019_02_19_010148) do
     t.string "poster_content_type"
     t.integer "poster_file_size"
     t.datetime "poster_updated_at"
+    t.integer "imdbRating"
+    t.string "age_rating"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.string "coef"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_genres_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -64,6 +84,46 @@ ActiveRecord::Schema.define(version: 2019_02_19_010148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["film_id"], name: "index_sessions_on_film_id"
+  end
+
+  create_table "user_sessions", force: :cascade do |t|
+    t.string "time"
+    t.integer "user_id"
+    t.string "coef"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_sessions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "name"
+    t.text "image"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_film_lists", force: :cascade do |t|
+    t.integer "film_id"
+    t.integer "user_id"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_users_film_lists_on_film_id"
+    t.index ["user_id"], name: "index_users_film_lists_on_user_id"
   end
 
 end

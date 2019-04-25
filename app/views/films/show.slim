@@ -5,13 +5,17 @@
     .media
       .media-left
         figure.image
-          = image_tag @film.poster.url :large
+          = image_tag @film.poster.url :medium
       .media-content
         p.title.is-2 =@film.title
         p.is-4
-          ="Жанр: #{@film.genre}."
+          ="Genre: #{@film.genre}."
         p 
-          ="Продолжительность: #{@film.duration} мин."
+          ="Duration: #{@film.duration} min."
+        p
+          ="IMDB: #{@film.imdbRating}"
+        p
+          ="MPAA: #{@film.age_rating}"
         br
         .content
           p. 

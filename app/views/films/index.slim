@@ -4,14 +4,19 @@
       .columns style=("display: table-cell;")
         .column.is-narrow
           .box
+            p.title style=("text-align: center;")
+                    = link_to(f.title.truncate(16), controller: "films", action: "show", id: f.id)
             figure.image.is-2by3 style=("height: 366px; width: 244px;")
               = link_to(image_tag(f.poster.url(:large)), controller: "films", action: "show", id: f.id)
             .content
               .media 
                 .media-content
-                  p.title style=("text-align: center;")
-                    = link_to(f.title.truncate(16), controller: "films", action: "show", id: f.id)
-                  p.subtitle.has-text-centered
+                  br
+                  p.title.is-6.has-text-centered.has-text-link
+                    ="#{f.genre.gsub(",", " • ")}"
+                  p.title.is-6.has-text-centered
+                    =f.age_rating
+                  p.subtitle.has-text-centered style=("margin: 0;")
                     - f.times_s.split.each do |t|
                       span.button.is-rounded.my_btn[ 
                         class=($time_now < t ? 'is-link is-info':'')
@@ -19,7 +24,12 @@
                         class=(t<"18:00"?"before18":"after18")
                       ]
                         = t 
-                    
+-if @user
+  h1.is-header The best for you:
+  - @list.order(rating: :desc).each_with_index do |f, i|
+     span.button.is-rounded.my_btn.title.has-text-link 
+        = "#{i+1}. " 
+        =link_to(@films.find(f.film_id).title, controller: "films", action: "show", id: f.id)
 javascript:
   $(document).ready(function(){
     $("#time")

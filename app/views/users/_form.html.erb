@@ -1,0 +1,49 @@
+<div class="columns field">
+  <div class="column">
+    <%= form_tag("/users/#{current_user.id}", method: :put) do %>
+      <span class="title" id="genre"> Genre </span> 
+      <br>
+      <div class="columns">
+        <% @user.genres.each do |g| %>
+          <div class="column">
+            <%= label_tag        g.name, nil, class: :label %>
+            <%= number_field_tag g.name, g.coef, in: 0..10, class: :input %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
+
+<div class="columns field">
+    <div class="column">
+      <span class="title" id="time"> Time </span>
+      <br>
+    <div class="columns">
+        <% @user.user_sessions.each do |s| %>
+          <div class="column">
+            <%= label_tag        s.time, nil, class: :label %>
+            <%= number_field_tag s.time, s.coef, in: 0..10, class: :input %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>
+
+<div class="columns field">
+    <div class="column">
+      <span class="title" id="rating"> MPAA rating </span>
+      <br>
+    <div class="columns">
+        <% rating = { "G" => "General audiences","PG" => "Parental guidance suggested","PG-13" => "Parents strongly cautioned","R" => "Restricted" }; %>
+        <% @user.age_ratings.each do |r| %>
+          <div class="column">
+            <%= label_tag        r.rating, "#{rating[r.rating]} (#{r.rating})", class: :label %>
+            <%= number_field_tag r.rating, r.coef, in: 0..10, class: :input %> 
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= submit_tag 'Save', class: "button is-medium", style: "margin: 0 23rem;" %>
+  <% end %>
+</div>
+
