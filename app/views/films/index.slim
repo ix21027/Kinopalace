@@ -1,11 +1,11 @@
-.container  
+.container.is-fluid
   h1.has-text-weight-semibold.has-text-centered.has-text-link Kinopalace
   - for f in @films
       .columns style=("display: table-cell;")
         .column.is-narrow
           .box
             p.title style=("text-align: center;")
-                    = link_to(f.title.truncate(16), controller: "films", action: "show", id: f.id)
+              = link_to(f.title.truncate(16), controller: "films", action: "show", id: f.id)
             figure.image.is-2by3 style=("height: 366px; width: 244px;")
               = link_to(image_tag(f.poster.url(:large)), controller: "films", action: "show", id: f.id)
             .content
@@ -24,12 +24,17 @@
                         class=(t<"18:00"?"before18":"after18")
                       ]
                         = t 
--if @user
-  h1.is-header The best for you:
-  - @list.order(rating: :desc).each_with_index do |f, i|
-     span.button.is-rounded.my_btn.title.has-text-link 
-        = "#{i+1}. " 
-        =link_to(@films.find(f.film_id).title, controller: "films", action: "show", id: f.id)
+  -if @user
+    h1.is-header Suggestions for you:
+    - @list.order(rating: :desc).each_with_index do |f, i|
+       span.field.is-grouped.is-grouped-multiline style=("display: inline-block; margin: 20px")
+         .control
+           .tags.has-addons.is-rounded.title.is-3
+              .tag.is-rounded.title.is-3
+                = "#{i+1}. " 
+                = link_to(@films.find(f.film_id).title, controller: "films", action: "show", id: f.id)
+              .tag.is-rounded.is-info.title.is-3
+                ="#{f.rating}"
 javascript:
   $(document).ready(function(){
     $("#time")
