@@ -8,10 +8,10 @@ class FilmList
   Times   = %w[MORNING AFTERNOON EVENING NIGHT]
   Genres  = %w[ADVENTURE ACTION DRAMA FANTASY COMEDY THRILLER HORROR MUSICAL ROMANTIC WESTERN DOCUMENTARY]
   
-  GenreCoef = 0.2
-  TimeCoef = 0.3
   IMDBCoef = 0.3 
+  TimeCoef = 0.3
   MPAACoef = 0.2
+  GenreCoef = 0.2
   
   def build 
     if @params
@@ -38,7 +38,7 @@ class FilmList
       r += (@user.age_ratings.find_by(rating: f.age_rating).coef.to_i * MPAACoef)
       r += (f.imdbRating * IMDBCoef)
       list = f.users_film_lists.find_or_create_by(user: @user)
-      list.update(rating: r)
+      list.update(rating: r.round(1))
     end  
   end 
   

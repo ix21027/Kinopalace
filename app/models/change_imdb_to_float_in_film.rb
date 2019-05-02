@@ -1,0 +1,2 @@
+class ChangeImdbToFloatInFilm < ApplicationRecord
+end

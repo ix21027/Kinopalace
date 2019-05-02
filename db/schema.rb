@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_143433) do
+ActiveRecord::Schema.define(version: 2019_05_02_102026) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_143433) do
     t.string "poster_content_type"
     t.integer "poster_file_size"
     t.datetime "poster_updated_at"
-    t.integer "imdbRating"
+    t.float "imdbRating"
     t.string "age_rating"
   end
 
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_143433) do
   create_table "users_film_lists", force: :cascade do |t|
     t.integer "film_id"
     t.integer "user_id"
-    t.integer "rating"
+    t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["film_id"], name: "index_users_film_lists_on_film_id"

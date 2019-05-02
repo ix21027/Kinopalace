@@ -34,7 +34,10 @@
                 = "#{i+1}. " 
                 = link_to(@films.find(f.film_id).title, controller: "films", action: "show", id: f.id)
               .tag.is-rounded.is-info.title.is-3
-                ="#{f.rating}"
+                strong 
+                  ="#{f.rating} "
+                span  style=("font-size: initial; padding-top: 8px;")
+                 ="/ 10"
 javascript:
   $(document).ready(function(){
     $("#time")

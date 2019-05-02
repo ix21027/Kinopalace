@@ -1,0 +1,2 @@
+class ChangeRatingToFloatInUsersFilmList < ApplicationRecord
+end
