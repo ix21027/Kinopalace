@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'paperclip'
 gem 'activeadmin'
 gem 'devise'
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
